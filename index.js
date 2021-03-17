@@ -30,8 +30,9 @@ module.exports = async (message, pages, emojis) => {
         }
     }
 
-    const Filter = (reaction, user) => reactions.includes(reaction.emoji.name) && user.id === author.id
+    CurrentPage.edit(pages[PageNumber].setFooter(`Page ${PageNumber + 1}/${pages.length}`))
 
+    const Filter = (reaction, user) => emojis.includes(reaction.emoji.name) && user.id === author.id
     const ReactionCollector = CurrentPage.createReactionCollector(Filter, {
         time: 260 * 1000
     })

@@ -1,6 +1,6 @@
 {
   "name": "discordeasypages",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An effective & easy-to-use package for making discord.js pages.",
   "main": "index.js",
   "scripts": {},
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/KingCh1ll/discord.js-pages/issues"
   },
-  "homepage": "https://github.com/KingCh1ll/discord.js-pages#readme"
+  "homepage": "https://github.com/KingCh1ll/discord.js-pages#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
 }

@@ -8,5 +8,8 @@
 .prettierrc
 .editorconfig
 
+# Node Modules
+node_modules
+
 # Recycle Bin
 $RECYCLE.BIN/
