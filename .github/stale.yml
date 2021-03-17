@@ -1,0 +1,7 @@
+daysUntilStale: 14
+daysUntilClose: 3
+staleLable: inactive
+markComment: >
+  This issue was marked as Inactive because it had no activity for the past 2 weeks. If this issue keeps being inacive, it will close in 3 days.
+closeComent: >
+  This issue was closed due to Inactivity.

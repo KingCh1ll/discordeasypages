@@ -1,0 +1,12 @@
+# Node
+.node_repl_history
+.npm
+
+# Visual Studio
+.vscode
+.eslintrc.json
+.prettierrc
+.editorconfig
+
+# Recycle Bin
+$RECYCLE.BIN/
