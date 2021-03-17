@@ -42,14 +42,10 @@ module.exports = async (message, pages, emojis) => {
         if (reaction.emoji.name){
             if (emojis[0]){
                 PageNumber = PageNumber > 0 ? --PageNumber : pages.length - 1
-
-                break
             } else if (emojis[1]){
                 PageNumber = PageNumber + 1 < pages.length ? ++PageNumber : 0
-
-                break
             } else {
-                break
+                return
             }
         }
 
