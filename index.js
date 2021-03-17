@@ -1,11 +1,11 @@
 const Discord = require("discord.js")
 
 /**
- * 
- * @param {object} message 
- * @param {table} pages 
- * @param {table} emojis 
- * @returns {object} Current page.
+ * DiscordEasyPages constructor.
+ * @param {Object} message - Discord message.
+ * @param {Object} pages - Discord.js Embeds in a table.
+ * @param {Object} emojis - Emojis.
+ * @returns {Object} CurrentPage
  */
 
 module.exports = async (message, pages, emojis) => {
