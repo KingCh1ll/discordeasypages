@@ -2,22 +2,6 @@
     <a href="https://nodei.co/npm/discordeasypages/"><img src="https://nodei.co/npm/discordeasypages.png?downloads=true&stars=true" alt="NPM Info"></a>
 </div>
 
-<details open="open">
- <summary>Table of Contents</summary>
- <ol>
-  <li><a href="#install">Install</a>
-    <ul>
-      <li><a href="#required-programs-dependencies">Required Programs & Dependencies</a></li>
-    </ul>
-  </li>
-  <li><a href="#ch1ll-techs-license">License</a>
-    <ul>
-      <li><a href="#ch1llbloxs-license">Ch1llBlox's License</a></li>
-    </ul>
-  </li>
- </ol>
-</details>
-
 # ❔ About
 ### ❔ About DiscordEasyPages
 An effective & easy-to-use package for making discord.js pages. Built using discord.js version 12. However, DiscordEasyPages will work on older versions. Pages must be embeds.
