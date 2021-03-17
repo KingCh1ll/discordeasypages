@@ -44,7 +44,7 @@ module.exports = async (message, pages, emojis) => {
 
     const Filter = (reaction, user) => emojis.includes(reaction.emoji.name) && user.id === message.author.id
     const ReactionCollector = CurrentPage.createReactionCollector(Filter, {
-        time: pages.length * 2000
+        time: pages.length * 5000
     })
 
     ReactionCollector.on("collect", reaction => {
@@ -64,9 +64,11 @@ module.exports = async (message, pages, emojis) => {
     })
 
     ReactionCollector.on("end", () => {
-        if (!CurrentPage.deleted) {
-            CurrentPage.reactions.removeAll()
+        if (CurrentPage.deleted){
+            return
         }
+
+        CurrentPage.reactions.removeAll()
     })
 
     return CurrentPage
