@@ -5,10 +5,11 @@ const Discord = require("discord.js")
  * @param {Object} message - Discord message.
  * @param {Object} pages - Discord.js Embeds in a table.
  * @param {Object} emojis - Emojis.
+ * @param {Number} timeout - Timeout until emojis will be removed.
  * @returns {Object} CurrentPage
  */
 
-module.exports = async (message, pages, emojis) => {
+module.exports = async (message, pages, emojis, timeout) => {
     if (!message) {
         throw new Error("[DiscordEasyPages]: Please provide a valid discord message.")
     }
@@ -19,6 +20,10 @@ module.exports = async (message, pages, emojis) => {
 
     if (!emojis) {
         emojis = ["⬅", "➡"]
+    }
+
+    if (!timeout){
+        timeout = 600 * 1000
     }
 
     if (!emojis.length === 2) {
@@ -34,9 +39,9 @@ module.exports = async (message, pages, emojis) => {
         try {
             await CurrentPage.react(emoji)
         } catch (err) {
-            CurrentPage.edit(pages[PageNumber].setFooter("Error occured."))
+            CurrentPage.edit(pages[PageNumber].setFooter("Error occured!"))
 
-            return new Error(`[DiscordEasyPages]: Error reacting! Are you sure this is a valid emoji?`)
+            return new Error(`[DiscordEasyPages]: Error reacting with ${emoji}! Are you sure this is a valid emoji?`)
         }
     }
 
@@ -44,7 +49,7 @@ module.exports = async (message, pages, emojis) => {
 
     const Filter = (reaction, user) => emojis.includes(reaction.emoji.name) && user.id === message.author.id
     const ReactionCollector = CurrentPage.createReactionCollector(Filter, {
-        time: pages.length * 5000
+        time: timeout
     })
 
     ReactionCollector.on("collect", reaction => {
