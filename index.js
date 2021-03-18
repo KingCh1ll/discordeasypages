@@ -5,12 +5,13 @@ const Discord = require("discord.js")
  * @param {Object} message - Discord message.
  * @param {Object} pages - Discord.js Embeds in a table.
  * @param {Object} emojis - Emojis.
+ * @param {String} footer - Footer next that goes aside the page number.
  * @param {Number} authoronly - If only the author should be able to change the page. Default true.
- * @param {Number} timeout - Timeout until emojis will be removed. Default: 600 seconds.
+ * @param {Number} timeout - Timeout until emojis will be removed. Default: 250 seconds.
  * @returns {Object} CurrentPage
  */
 
-module.exports = async (message, pages, emojis, authoronly, timeout) => {
+module.exports = async (message, pages, emojis, footer, authoronly, timeout) => {
     if (!message) {
         throw new Error("[DiscordEasyPages]: Please provide a valid discord message.")
     }
@@ -27,8 +28,12 @@ module.exports = async (message, pages, emojis, authoronly, timeout) => {
         authoronly = true
     }
 
+    if (!footer){
+        footer = "⚡"
+    }
+
     if (!timeout){
-        timeout = 600 * 1000
+        timeout = 250 * 1000
     }
 
     if (!emojis.length === 2) {
@@ -38,9 +43,9 @@ module.exports = async (message, pages, emojis, authoronly, timeout) => {
     var PageNumber = 0
     const CurrentPage = await message.channel.send(pages[PageNumber])
 
-    for (const emoji of emojis) {
-        CurrentPage.edit(pages[PageNumber].setFooter("Please wait until reactions load!"))
+    CurrentPage.edit(pages[PageNumber].setFooter(footer + " • Please wait until reactions load!"))
 
+    for (const emoji of emojis) {
         try {
             await CurrentPage.react(emoji)
         } catch (err) {
@@ -50,7 +55,7 @@ module.exports = async (message, pages, emojis, authoronly, timeout) => {
         }
     }
 
-    CurrentPage.edit(pages[PageNumber].setFooter(`Page ${PageNumber + 1}/${pages.length}`))
+    CurrentPage.edit(pages[PageNumber].setFooter(footer + ` • Page ${PageNumber + 1}/${pages.length}`))
 
     const Filter = (reaction, user) => authoronly ? emojis.includes(reaction.emoji.name) && user.id === message.author.id : emojis.includes(reaction.emoji.name)
     const ReactionCollector = CurrentPage.createReactionCollector(Filter, {
@@ -78,7 +83,7 @@ module.exports = async (message, pages, emojis, authoronly, timeout) => {
             }
         }
 
-        CurrentPage.edit(pages[PageNumber].setFooter(`Page ${PageNumber + 1}/${pages.length}`))
+        CurrentPage.edit(pages[PageNumber].setFooter(footer + ` • Page ${PageNumber + 1}/${pages.length}`))
     })
 
     ReactionCollector.on("end", () => {
