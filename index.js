@@ -52,7 +52,7 @@ module.exports = async (message, pages, emojis, authoronly, timeout) => {
 
     CurrentPage.edit(pages[PageNumber].setFooter(`Page ${PageNumber + 1}/${pages.length}`))
 
-    const Filter = (reaction, user) => authoronlyuser ? emojis.includes(reaction.emoji.name) && user.id === message.author.id : emojis.includes(reaction.emoji.name)
+    const Filter = (reaction, user) => authoronly ? emojis.includes(reaction.emoji.name) && user.id === message.author.id : emojis.includes(reaction.emoji.name)
     const ReactionCollector = CurrentPage.createReactionCollector(Filter, {
         time: timeout
     })
