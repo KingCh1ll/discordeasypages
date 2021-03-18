@@ -1,6 +1,6 @@
 {
   "name": "discordeasypages",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "An effective & easy-to-use package for making discord.js pages.",
   "main": "index.js",
   "scripts": {},
