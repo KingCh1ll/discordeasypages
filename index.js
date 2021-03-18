@@ -5,11 +5,12 @@ const Discord = require("discord.js")
  * @param {Object} message - Discord message.
  * @param {Object} pages - Discord.js Embeds in a table.
  * @param {Object} emojis - Emojis.
- * @param {Number} timeout - Timeout until emojis will be removed.
+ * @param {Number} authoronly - If only the author should be able to change the page. Default true.
+ * @param {Number} timeout - Timeout until emojis will be removed. Default: 600 seconds.
  * @returns {Object} CurrentPage
  */
 
-module.exports = async (message, pages, emojis, timeout) => {
+module.exports = async (message, pages, emojis, authoronly, timeout) => {
     if (!message) {
         throw new Error("[DiscordEasyPages]: Please provide a valid discord message.")
     }
@@ -20,6 +21,10 @@ module.exports = async (message, pages, emojis, timeout) => {
 
     if (!emojis) {
         emojis = ["⬅", "➡"]
+    }
+
+    if (!authoronly){
+        authoronly = true
     }
 
     if (!timeout){
@@ -47,7 +52,7 @@ module.exports = async (message, pages, emojis, timeout) => {
 
     CurrentPage.edit(pages[PageNumber].setFooter(`Page ${PageNumber + 1}/${pages.length}`))
 
-    const Filter = (reaction, user) => emojis.includes(reaction.emoji.name) && user.id === message.author.id
+    const Filter = (reaction, user) => authoronlyuser ? emojis.includes(reaction.emoji.name) && user.id === message.author.id : emojis.includes(reaction.emoji.name)
     const ReactionCollector = CurrentPage.createReactionCollector(Filter, {
         time: timeout
     })

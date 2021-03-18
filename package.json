@@ -1,6 +1,6 @@
 {
   "name": "discordeasypages",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "An effective & easy-to-use package for making discord.js pages.",
   "main": "index.js",
   "scripts": {},
@@ -10,8 +10,13 @@
   },
   "keywords": [
     "discord.js",
+    "rich",
+    "message",
+    "embed",
     "discord",
-    "pages"
+    "pages",
+    "easy",
+    "kingch1ll"
   ],
   "author": "KingCh1ll",
   "license": "Apache-2.0",
