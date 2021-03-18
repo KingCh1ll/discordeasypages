@@ -68,7 +68,7 @@ Bot.login("YourBotTokenFromDiscordDeveloperHubGoesHere")
 ```
 
 ### 📺 Demo
-![Demo](https://user-images.githubusercontent.com/77991729/111636437-dd417780-87ce-11eb-971e-8cdbb50d84a5.mp4)
+![Demo](https://imgur.com/3oGZxFM.gif)
 
 ### ⁉ Support
 If you acquire help, we ask that you join [KingCh1ll's Server](https://discord.gg/5DzTfHs7dy) on [Discord](https://discord.com) & open a ticket. If you dont have discord, you may open up a discussion!
