@@ -1,6 +1,6 @@
 {
   "name": "discordeasypages",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "An effective & easy-to-use package for making discord.js pages.",
   "main": "index.js",
   "scripts": {},
@@ -18,10 +18,17 @@
     "easy",
     "kingch1ll"
   ],
+  "engines": {
+    "discord.js": "^12.0.0",
+    "node": ">=14"
+  },
   "author": "KingCh1ll",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/KingCh1ll/discord.js-pages/issues"
+  },
+  "funding": {
+    "url": "https://patreon.com/KingCh1ll"
   },
   "homepage": "https://github.com/KingCh1ll/discord.js-pages#readme",
   "devDependencies": {
