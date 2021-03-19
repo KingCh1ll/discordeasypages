@@ -6,6 +6,9 @@
 ### ❔ About DiscordEasyPages
 An effective & easy-to-use package for making discord.js pages. Built using discord.js version 12. However, DiscordEasyPages will work on older versions. Pages must be embeds.
 
+![Demo](https://imgur.com/3oGZxFM.gif)
+DiscordEasyPages in action!
+
 # 📋 Information
 ### ❕ Required Programes & Dependencies
 This package **REQUIRES** [node.js](https://nodejs.org/). Without it, this package cannot run nor download. You'll also need the package [Discord.js](https://discord.js.org/). When done, run the command bellow in your terminal.
@@ -66,9 +69,6 @@ Bot.on("message", (message) => {
 console.log("---------- Logging into Bot ----------") 
 Bot.login("YourBotTokenFromDiscordDeveloperHubGoesHere")
 ```
-
-### 📺 Demo
-![Demo](https://imgur.com/3oGZxFM.gif)
 
 ### ⁉ Support
 If you acquire help, we ask that you join [KingCh1ll's Server](https://discord.gg/5DzTfHs7dy) on [Discord](https://discord.com) & open a ticket. If you dont have discord, you may open up a discussion!

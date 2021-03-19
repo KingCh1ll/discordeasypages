@@ -23,16 +23,15 @@
     "node": ">=14"
   },
   "author": "KingCh1ll",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/KingCh1ll/discord.js-pages/issues"
   },
-  "funding": {
-    "url": "https://patreon.com/KingCh1ll"
-  },
   "homepage": "https://github.com/KingCh1ll/discord.js-pages#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  },
   "devDependencies": {
-    "discord.js": "^12.5.1",
-    "jsdoc": "^3.6.6"
+    "prettier": "2.2.1"
   }
 }
