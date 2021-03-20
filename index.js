@@ -56,6 +56,7 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
     }
 
     CurrentPage.edit(pages[PageNumber].setFooter(footer + ` • Page ${PageNumber + 1}/${pages.length}`))
+    await CurrentPage.react("🗑")
 
     const Filter = (reaction, user) => authoronly ? emojis.includes(reaction.emoji.name) && user.id === message.author.id : emojis.includes(reaction.emoji.name)
     const ReactionCollector = CurrentPage.createReactionCollector(Filter, {
@@ -78,6 +79,13 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
                 } else {
                     PageNumber = 0
                 }
+            } else if (reaction.emoji.name === "🗑") {
+                if (CurrentPage.deleted){
+                    return
+                }
+
+                CurrentPage.reactions.removeAll()
+                CurrentPage.delete()
             } else {
                 return
             }
