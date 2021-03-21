@@ -85,7 +85,7 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
                 }
 
                 CurrentPage.reactions.removeAll()
-                CurrentPage.delete()
+                await CurrentPage.delete()
             } else {
                 return
             }
