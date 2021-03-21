@@ -63,7 +63,7 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
         time: timeout
     })
 
-    ReactionCollector.on("collect", reaction => {
+    ReactionCollector.on("collect", async (reaction) => {
         reaction.users.remove(message.author)
 
         if (reaction.emoji.name) {
