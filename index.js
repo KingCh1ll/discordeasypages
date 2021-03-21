@@ -21,7 +21,7 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
     }
 
     if (!emojis) {
-        emojis = ["⬅", "➡"]
+        emojis = ["⬅", "➡", "🗑"]
     }
 
     if (!authoronly){
@@ -36,8 +36,8 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
         timeout = 250 * 1000
     }
 
-    if (!emojis.length === 2) {
-        return new Error(`[DiscordEasyPages]: Invalid number of emojis. Expected 2, got ${emojis.length}.`)
+    if (!emojis.length === 3) {
+        return new Error(`[DiscordEasyPages]: Invalid custom number of emojis. Expected 3, got ${emojis.length}.`)
     }
 
     var PageNumber = 0
@@ -79,7 +79,7 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
                 } else {
                     PageNumber = 0
                 }
-            } else if (reaction.emoji.name === "🗑") {
+            } else if (reaction.emoji.name === emojis[2]) {
                 if (CurrentPage.deleted){
                     return
                 }
