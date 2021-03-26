@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/KingCh1ll/discord.js-pages.git"
+    "url": "https://github.com/KingCh1ll/discordeasypages.git"
   },
   "keywords": [
     "discord.js",
@@ -25,9 +25,9 @@
   "author": "KingCh1ll",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KingCh1ll/discord.js-pages/issues"
+    "url": "https://github.com/KingCh1ll/discordeasypages/issues"
   },
-  "homepage": "https://github.com/KingCh1ll/discord.js-pages#readme",
+  "homepage": "https://github.com/KingCh1ll/discordeasypages#readme",
   "dependencies": {
     "discord.js": "^12.5.1"
   },
