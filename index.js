@@ -41,22 +41,22 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
     }
 
     var PageNumber = 0
-    const CurrentPage = await message.channel.send(pages[PageNumber])
+    const CurrentPage = await message.channel.send(pages[PageNumber]).catch((err) => { })
 
-    CurrentPage.edit(pages[PageNumber].setFooter(footer + " • Please wait until reactions load!"))
+    CurrentPage.edit(pages[PageNumber].setFooter(footer + " • Please wait until reactions load!")).catch((err) => { })
 
     for (const emoji of emojis) {
         try {
-            await CurrentPage.react(emoji)
+            await CurrentPage.react(emoji).catch((err) => { })
         } catch (err) {
-            CurrentPage.edit(pages[PageNumber].setFooter("Error occured!"))
+            CurrentPage.edit(pages[PageNumber].setFooter("Error occured!")).catch((err) => { })
 
             return new Error(`[DiscordEasyPages]: Error reacting with ${emoji}! Are you sure this is a valid emoji?`)
         }
     }
 
-    CurrentPage.edit(pages[PageNumber].setFooter(footer + ` • Page ${PageNumber + 1}/${pages.length}`))
-    await CurrentPage.react("🗑")
+    CurrentPage.edit(pages[PageNumber].setFooter(footer + ` • Page ${PageNumber + 1}/${pages.length}`)).catch((err) => { })
+    await CurrentPage.react("🗑").catch((err) => { })
 
     const Filter = (reaction, user) => authoronly ? emojis.includes(reaction.emoji.name) && user.id === message.author.id : emojis.includes(reaction.emoji.name)
     const ReactionCollector = CurrentPage.createReactionCollector(Filter, {
@@ -64,7 +64,7 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
     })
 
     ReactionCollector.on("collect", async (reaction) => {
-        reaction.users.remove(message.author)
+        reaction.users.remove(message.author).catch((err) => { })
 
         if (reaction.emoji.name) {
             if (reaction.emoji.name === emojis[0]) {
@@ -84,14 +84,14 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
                     return
                 }
 
-                CurrentPage.reactions.removeAll()
-                await CurrentPage.delete()
+                CurrentPage.reactions.removeAll().catch((err) => { })
+                await CurrentPage.delete().catch((err) => { })
             } else {
                 return
             }
         }
 
-        CurrentPage.edit(pages[PageNumber].setFooter(footer + ` • Page ${PageNumber + 1}/${pages.length}`))
+        CurrentPage.edit(pages[PageNumber].setFooter(footer + ` • Page ${PageNumber + 1}/${pages.length}`)).catch((err) => { })
     })
 
     ReactionCollector.on("end", () => {
@@ -99,7 +99,7 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
             return
         }
 
-        CurrentPage.reactions.removeAll()
+        CurrentPage.reactions.removeAll().catch((err) => { })
     })
 
     return CurrentPage
