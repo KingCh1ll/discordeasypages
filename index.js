@@ -21,7 +21,7 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
     }
 
     if (!emojis) {
-        emojis = ["⬅", "➡", "🗑"]
+        emojis = ["⬅", "➡"]
     }
 
     if (!authoronly){
@@ -36,8 +36,8 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
         timeout = 250 * 1000
     }
 
-    if (!emojis.length === 3) {
-        return new Error(`[DiscordEasyPages]: Invalid custom number of emojis. Expected 3, got ${emojis.length}.`)
+    if (!emojis.length === 2) {
+        return new Error(`[DiscordEasyPages]: Invalid custom number of emojis. Expected 2, got ${emojis.length}.`)
     }
 
     var PageNumber = 0
@@ -56,7 +56,6 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
     }
 
     CurrentPage.edit(pages[PageNumber].setFooter(footer + ` • Page ${PageNumber + 1}/${pages.length}`)).catch((err) => { })
-    await CurrentPage.react("🗑").catch((err) => { })
 
     const Filter = (reaction, user) => authoronly ? emojis.includes(reaction.emoji.name) && user.id === message.author.id : emojis.includes(reaction.emoji.name)
     const ReactionCollector = CurrentPage.createReactionCollector(Filter, {
@@ -79,13 +78,6 @@ module.exports = async (message, pages, emojis, footer, authoronly, timeout) => 
                 } else {
                     PageNumber = 0
                 }
-            } else if (reaction.emoji.name === emojis[2]) {
-                if (CurrentPage.deleted){
-                    return
-                }
-
-                CurrentPage.reactions.removeAll().catch((err) => { })
-                await CurrentPage.delete().catch((err) => { })
             } else {
                 return
             }
