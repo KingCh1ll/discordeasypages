@@ -1,7 +1,7 @@
 {
   "name": "discordeasypages",
-  "version": "0.2.2",
-  "description": "An effective & easy-to-use package for making discord.js pages.",
+  "version": "0.2.3",
+  "description": "An effective and easy-to-use package for making, \"pages\" in discord.js for Discord bots.",
   "main": "index.js",
   "scripts": {},
   "repository": {
@@ -9,6 +9,9 @@
     "url": "https://github.com/KingCh1ll/discordeasypages.git"
   },
   "keywords": [
+    "discord",
+    "bot",
+    "bots",
     "discord.js",
     "rich",
     "message",
@@ -19,8 +22,8 @@
     "kingch1ll"
   ],
   "engines": {
-    "discord.js": "^12.0.0",
-    "node": ">=14"
+    "node": ">=10",
+    "npm": "*"
   },
   "author": "KingCh1ll",
   "license": "MIT",
@@ -28,9 +31,6 @@
     "url": "https://github.com/KingCh1ll/discordeasypages/issues"
   },
   "homepage": "https://github.com/KingCh1ll/discordeasypages#readme",
-  "dependencies": {
-    "discord.js": "^12.5.1"
-  },
   "devDependencies": {
     "prettier": "2.2.1"
   }
