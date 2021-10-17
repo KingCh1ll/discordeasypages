@@ -1,11 +1,22 @@
-**Problem**
-*Describe the problem and provide as much information as possible*
+---
 
-**Reproduce**
-*Steps to reproduce the bug*
+name: Bug report
+about: Report incorrect behavior.
+title: ''
+labels: 's: unverified, type: bug'
+assignees: ''
+---
+## The Problem
 
-**Screenshots**
-*Please include screenshots if possible*
+describe the bug in as much detail as possible
 
-**Additional Information**
-*Add any other information here*
+## How to Preproduce
+
+If you can, Include a reproducible code sample below
+
+```js
+// code here
+```
+
+**Details:**
+*Put any details that may help us here*

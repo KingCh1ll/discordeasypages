@@ -1,4 +1,4 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
 
 /**
  * DiscordEasyPages constructor.
@@ -13,86 +13,96 @@ const Discord = require("discord.js")
 
 module.exports = async (message, pages, emojis, footer, authoronly, timeout) => {
     if (!message) {
-        throw new Error("[DiscordEasyPages]: Please provide a valid discord message.")
+        throw new Error("[DiscordEasyPages]: Please provide a valid discord message.");
     }
 
     if (!pages) {
-        return new Error("[DiscordEasyPages]: Please include pages.")
+        return new Error("[DiscordEasyPages]: Please include pages.");
     }
 
     if (!emojis) {
-        emojis = ["⬅", "➡"]
+        emojis = ["⬅", "➡"];
     }
 
-    if (!authoronly){
-        authoronly = true
+    if (!authoronly) {
+        authoronly = true;
     }
 
-    if (!footer){
-        footer = "⚡"
+    if (!footer) {
+        footer = "⚡";
     }
 
-    if (!timeout){
-        timeout = 250 * 1000
+    if (!timeout) {
+        timeout = 250 * 1000;
     }
 
     if (!emojis.length === 2) {
-        return new Error(`[DiscordEasyPages]: Invalid custom number of emojis. Expected 2, got ${emojis.length}.`)
+        return new Error(`[DiscordEasyPages]: Invalid custom number of emojis. Expected 2, got ${emojis.length}.`);
     }
 
-    var PageNumber = 0
-    const CurrentPage = await message.channel.send(pages[PageNumber]).catch((err) => { })
+    let PageNumber = 0;
+    const CurrentPage = await message.channel.send({
+        embeds: [pages[PageNumber]]
+    }).catch(err => { });
 
-    CurrentPage.edit(pages[PageNumber].setFooter(footer + " • Please wait until reactions load!")).catch((err) => { })
+    CurrentPage.edit({
+        embeds: [pages[PageNumber].setFooter(`${footer} • Please wait until reactions load!`)]
+    });
 
     for (const emoji of emojis) {
         try {
-            await CurrentPage.react(emoji).catch((err) => { })
+            await CurrentPage.react(emoji).catch(err => { });
         } catch (err) {
-            CurrentPage.edit(pages[PageNumber].setFooter("Error occured!")).catch((err) => { })
+            CurrentPage.edit({
+                embeds: [pages[PageNumber].setFooter("Error occured!")]
+            });
 
-            return new Error(`[DiscordEasyPages]: Error reacting with ${emoji}! Are you sure this is a valid emoji?`)
+            return new Error(`[DiscordEasyPages]: Error reacting with ${emoji}! Are you sure this is a valid emoji?`);
         }
     }
 
-    CurrentPage.edit(pages[PageNumber].setFooter(footer + ` • Page ${PageNumber + 1}/${pages.length}`)).catch((err) => { })
+    CurrentPage.edit({
+        embeds: [pages[PageNumber].setFooter(`${footer} • Page ${PageNumber + 1}/${pages.length}`)]
+    });
 
-    const Filter = (reaction, user) => authoronly ? emojis.includes(reaction.emoji.name) && user.id === message.author.id : emojis.includes(reaction.emoji.name)
+    const Filter = (reaction, user) => authoronly ? emojis.includes(reaction.emoji.name) && user.id === message.author.id : emojis.includes(reaction.emoji.name);
     const ReactionCollector = CurrentPage.createReactionCollector(Filter, {
         time: timeout
-    })
+    });
 
-    ReactionCollector.on("collect", async (reaction) => {
-        reaction.users.remove(message.author).catch((err) => { })
+    ReactionCollector.on("collect", async reaction => {
+        reaction.users.remove(message.author).catch(err => { });
 
         if (reaction.emoji.name) {
             if (reaction.emoji.name === emojis[0]) {
-                if (PageNumber > 0){
-                    --PageNumber
+                if (PageNumber > 0) {
+                    --PageNumber;
                 } else {
-                    PageNumber = pages.length - 1
+                    PageNumber = pages.length - 1;
                 }
             } else if (reaction.emoji.name === emojis[1]) {
-                if (PageNumber + 1 < pages.length){
-                    ++PageNumber
+                if (PageNumber + 1 < pages.length) {
+                    ++PageNumber;
                 } else {
-                    PageNumber = 0
+                    PageNumber = 0;
                 }
             } else {
-                return
+                return;
             }
         }
 
-        CurrentPage.edit(pages[PageNumber].setFooter(footer + ` • Page ${PageNumber + 1}/${pages.length}`)).catch((err) => { })
-    })
+        CurrentPage.edit({
+            embeds: [pages[PageNumber].setFooter(`${footer} • Page ${PageNumber + 1}/${pages.length}`)]
+        });
+    });
 
     ReactionCollector.on("end", () => {
-        if (CurrentPage.deleted){
-            return
+        if (CurrentPage.deleted) {
+            return;
         }
 
-        CurrentPage.reactions.removeAll().catch((err) => { })
-    })
+        CurrentPage.reactions.removeAll().catch(err => { });
+    });
 
-    return CurrentPage
-}
+    return CurrentPage;
+};

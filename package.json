@@ -1,9 +1,19 @@
 {
   "name": "discordeasypages",
-  "version": "0.2.4",
+  "version": "1.0.0",
   "description": "An effective and easy-to-use package for making, \"pages\" in discord.js for Discord bots.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "update": "git pull && npm install",
+    "checkPacs": "npx npm-check-updates",
+    "checkPacs:u": "npx npm-check-updates -u && npm install",
+    "test": "eslint . --ignore-path .gitignore",
+    "test:fix": "eslint . --ignore-path .gitignore --fix",
+    "docs": "docgen --source bot --custom docs/index.yml --output docs/docs.json",
+    "docs:test": "docgen --source bot --custom docs/index.yml",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/KingCh1ll/discordeasypages.git"
@@ -19,11 +29,13 @@
     "discord",
     "pages",
     "easy",
-    "kingch1ll"
+    "kingch1ll",
+    "king",
+    "ch1ll"
   ],
   "engines": {
-    "node": ">=10",
-    "npm": "*"
+    "node": ">=16",
+    "npm": "7.x"
   },
   "author": "KingCh1ll",
   "license": "MIT",
@@ -31,7 +43,16 @@
     "url": "https://github.com/KingCh1ll/discordeasypages/issues"
   },
   "homepage": "https://github.com/KingCh1ll/discordeasypages#readme",
+  "dependencies": {
+    "discord-buttons": "^4.0.0",
+    "discord.js": "^13.1.0"
+  },
   "devDependencies": {
-    "prettier": "2.2.1"
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^3.4.1",
+    "npm": "^7.21.1",
+    "prettier": "2.3.2"
   }
 }

@@ -1,11 +1,11 @@
-**Changes & Why it Should be Merged**
-*Write Here!*
+# Title Goes Here
 
-**Status**
-- [ ] Code changes have been tested
-- [ ] Code changes work without errors
+Short description goes here
 
-**Content of Pull Request**
-- [ ] This pull request makes changes
-  - [ ] This pull request adds more functinaliy
-- [ ] This pull request **only** includes non-code changes. (Ex: README.md)
+## New Features
+
+- [ ] Example change!
+
+## Issues/Discussions
+
+Any related Issues/Discussions should be linked here.

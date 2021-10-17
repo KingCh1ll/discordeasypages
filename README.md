@@ -4,7 +4,7 @@
 
 # ❔ About
 ### ❔ About DiscordEasyPages
-An effective and easy-to-use package for making discord.js pages for Discord bots. Built using discord.js version 12. However, DiscordEasyPages should work on older versions. Each page supplied must be a message embed. Inspired by Discord-pagnation.
+An effective and easy-to-use package for making discord.js pages for Discord bots. Built using discord.js v13. However, DiscordEasyPages should work on older versions. Each page supplied must be a message embed. Inspired by Discord-pagnation.
 
 ![Demo](https://imgur.com/3oGZxFM.gif)
 *DiscordEasyPages in action!*
