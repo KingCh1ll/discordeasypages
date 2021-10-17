@@ -53,6 +53,6 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^3.4.1",
     "npm": "^7.21.1",
-    "prettier": "2.3.2"
+    "prettier": "2.4.1"
   }
 }
