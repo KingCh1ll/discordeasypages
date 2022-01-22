@@ -142,12 +142,12 @@ module.exports = async (message, pages, menuName = "pages", options = {}) => {
     collector.on("end", async () => {
         await CurrentPage.edit({
             embeds: [
-              NewEmbed
+              CurrentPage
                 .setTitle(await message.translate("Timed Out!"), bot.user.displayAvatarURL({ dynamic: true }))
                 .setDescription(await message.translate("Please rerun command."))
             ],
             components: []
-        });
+        }).catch(err => {});
     });
 
     return CurrentPage;
