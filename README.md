@@ -4,9 +4,9 @@
 
 # ❔ About
 ### ❔ About DiscordEasyPages
-An effective and easy-to-use package for making discord.js pages for Discord bots. Built using discord.js v13. However, DiscordEasyPages should work on older versions. Each page supplied must be a message embed. Inspired by Discord-pagnation.
+An effective and easy-to-use package for making discord.js button pages for Discord bots. Each page supplied must be a message embed. Inspired by Discord-pagnation.
 
-![Demo](https://imgur.com/3oGZxFM.gif)
+![Demo](https://ch1ll.needs.rest/Discord_Xsmb0fGdhN.mp4)
 *DiscordEasyPages in action!*
 
 # 📋 Information
@@ -16,7 +16,7 @@ This package **REQUIRES** [node.js](https://nodejs.org/). Without it, this packa
 ### ❗ Example
 Need help using my package? Simple! You must get your discord bot token for this to work.
 
-```
+```js
 // Librarys //
 const Discord = require("discord.js")
 const DiscordEasyPages = require("discordeasypages")
@@ -38,13 +38,9 @@ const Prefix = "^"
 
 // Code //
 Bot.on("message", (message) => {
-    if (message.author.bot){
-        return
-    }
+    if (message.author.bot) return
 
-    if (!message.content.startsWith(Prefix)){
-        return
-    }
+    if (!message.content.startsWith(Prefix)) return
 
     const Arguments = message.content
         .slice(Prefix.length)
@@ -61,7 +57,7 @@ Bot.on("message", (message) => {
             .setTitle("Page 2")
             .setDescription("Welcome to page 2!")
 
-        DiscordEasyPages(message, [Embed, Embed2], ["⬅", "➡"])
+        DiscordEasyPages(message, [Embed, Embed2])
     }
 })
 
@@ -69,5 +65,6 @@ console.log("---------- Logging into Bot ----------")
 Bot.login("YourBotTokenFromDiscordDeveloperHubGoesHere")
 ```
 
+
 ### ⁉ Support
-If you acquire help, we ask that you join [KingCh1ll's Discord Server](https://discord.gg/5DzTfHs7dy) & open a ticket. If you don't have discord, you may open up a discussion!
+If you acquire help, we ask that you join [KingCh1ll's Discord Server](https://discord.gg/MKKeRU2y4x) & open a ticket. If you don't have discord, you may open up a discussion in our github!
