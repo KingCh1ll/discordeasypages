@@ -6,7 +6,7 @@
 ### ❔ About DiscordEasyPages
 An effective and easy-to-use package for making discord.js button pages for Discord bots. Each page supplied must be a message embed. Inspired by Discord-pagnation.
 
-![Demo](https://ch1ll.needs.rest/Discord_Xsmb0fGdhN.mp4)
+[Click here to view demo!](https://user-images.githubusercontent.com/77991729/150664039-c367f6f7-0b95-4f8b-af62-122966510717.mp4)
 *DiscordEasyPages in action!*
 
 # 📋 Information
