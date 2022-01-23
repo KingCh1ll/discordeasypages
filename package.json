@@ -1,6 +1,6 @@
 {
   "name": "discordeasypages",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "An easy package for making \"button pages\" in discord.js for Discord bots.",
   "main": "index.js",
   "scripts": {
